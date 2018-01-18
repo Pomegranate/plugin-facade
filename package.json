@@ -1,0 +1,38 @@
+{
+  "name": "@pomegranate/plugin-facade",
+  "version": "0.0.0",
+  "description": "The internal plugin interface for the Pomegranate framework.",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test FORCE_COLOR=1 tap -R spec --cov test/unit/*.js test/unit/**/*.js test/integration/**/*.js",
+    "test:report": "NODE_ENV=test FORCE_COLOR=1 tap -R spec --cov --coverage-report=lcov test/unit/**/*.js test/integration/**/*.js",
+    "test:file": "NODE_ENV=test FORCE_COLOR=1 tap -R spec",
+    "document": "documentation build src/** -f md -o docs/index.md"
+  },
+  "keywords": [
+    "Pomegranate",
+    "Pomegranate-structural"
+  ],
+  "author": "Jim Bulkowski <jim.b@paperelectron.com> (http://paperelectron.com)",
+  "license": "MIT",
+  "files": [
+    "index.js",
+    "lib/",
+    "docs/"
+  ],
+  "dependencies": {
+    "@pomegranate/framework-utils": "^0.0.1",
+    "bluebird": "^3.5.0",
+    "chalk": "^2.3.0",
+    "debug": "^3.0.1",
+    "fs-extra": "^5.0.0",
+    "lodash": "^4.17.4",
+    "parent-require": "^1.0.0",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "@pomegranate/test-utils": "^0.2.1",
+    "documentation": "^5.2.2",
+    "tap": "^10.7.2"
+  }
+}
