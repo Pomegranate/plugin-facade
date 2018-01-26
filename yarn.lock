@@ -30,9 +30,9 @@
     fs-extra "^4.0.1"
     lodash "^4.17.4"
 
-"@pomegranate/test-utils@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@pomegranate/test-utils/-/test-utils-0.2.1.tgz#eca8dd83f1426655ca59ddec36776b01f85b520d"
+"@pomegranate/test-utils@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@pomegranate/test-utils/-/test-utils-0.3.0.tgz#b7a5b845faf9da97de063c3fde1141425ae16d25"
   dependencies:
     "@pomegranate/framework-utils" "^0.2.1"
     bluebird "^3.5.0"

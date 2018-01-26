@@ -71,7 +71,6 @@ _fp.each((plugin) => {
 
       SP.runHook('start')
         .then((p) => {
-          console.log(p.getErrors());
           t.type(p, PluginCtor, 'Returned object from runHook is Plugin')
           t.end()
         })
