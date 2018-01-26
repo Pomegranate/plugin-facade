@@ -1,6 +1,6 @@
 {
   "name": "@pomegranate/plugin-facade",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "The internal plugin interface for the Pomegranate framework.",
   "main": "index.js",
   "scripts": {
