@@ -21,7 +21,6 @@
     "docs/"
   ],
   "dependencies": {
-    "@pomegranate/framework-utils": "^0.0.1",
     "bluebird": "^3.5.0",
     "chalk": "^2.3.0",
     "debug": "^3.0.1",

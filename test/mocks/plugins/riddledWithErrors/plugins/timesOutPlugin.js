@@ -1,8 +1,10 @@
+const Promise = require('bluebird')
 exports.options = {
   workDir: '/mockWorkDir'
 }
 
 exports.metadata = {
+  frameworkVersion: 6,
   name: 'servicePlugin',
   type: 'service',
   param: 'service',
@@ -11,12 +13,12 @@ exports.metadata = {
 
 exports.plugin = {
   load: function(inject, loaded){
-    setTimeout(() => {
-      loaded(null, {g: 'service'})
-    }, 2100)
+    return Promise.delay(2100).then(() => {
+      return {a: 'ok'}
+    })
   },
-  start: function(done){done()},
-  stop: function(done){done()}
+  start: function(done){},
+  stop: function(done){}
 }
 
 exports.errors = {}

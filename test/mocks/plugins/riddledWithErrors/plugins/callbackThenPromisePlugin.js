@@ -3,6 +3,7 @@ exports.options = {
 }
 
 exports.metadata = {
+  frameworkVersion: 6,
   name: 'servicePlugin',
   type: 'service',
   param: 'service',
@@ -10,8 +11,7 @@ exports.metadata = {
 }
 
 exports.plugin = {
-  load: function(inject, loaded){
-    loaded(null, {g: 'service'})
+  load: function(){
     return {g: 'service'}
   },
   start: function(done){done()},

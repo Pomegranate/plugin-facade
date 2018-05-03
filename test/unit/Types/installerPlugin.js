@@ -29,7 +29,7 @@ tap.test('Installer Plugin', (t) => {
   let pluginData = getPlugin('common/plugins/', 'installer')
   let SP = new Plugin(pluginData)
   t.type(SP, PluginCtor, "Has the correct class")
-  let FrameworkDI = util.mockFrameworkInjector(false, {}, applicationBase)
+  let FrameworkDI = util.mockFrameworkInjector(false, {logLevel: 4}, applicationBase)
   let PluginDI = util.mockPluginDI()
 
   t.test('Initialize', (t) => {
@@ -43,6 +43,27 @@ tap.test('Installer Plugin', (t) => {
 
   t.test('Configure', (t) => {
     SP.configure(['dynamic', 'factory','instance','merge','service'])
+      .then((p) => {
+        t.done()
+      })
+  })
+
+  t.test('Load Hook', (t) => {
+    SP.runHook('load')
+      .then((p) => {
+        t.done()
+      })
+  })
+
+  t.test('Start Hook', (t) => {
+    SP.runHook('start')
+      .then((p) => {
+        t.done()
+      })
+  })
+
+  t.test('Stop Hook', (t) => {
+    SP.runHook('stop')
       .then((p) => {
         t.done()
       })

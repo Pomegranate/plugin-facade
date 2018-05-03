@@ -3,6 +3,7 @@ exports.options = {
 }
 
 exports.metadata = {
+  frameworkVersion: 6,
   name: 'dynamicPlugin',
   type: 'dynamic',
   param: 'dynamic',
@@ -15,10 +16,10 @@ exports.plugin = {
     let D = {param: 'X', load: {name: 'dependency-d', obj: 'X'}}
     let Y = {param: 'Y', load: {name: 'dependency-d', obj: 'Y'}}
     let Z = {param: 'Z', load: {name: 'dependency-d', obj: 'Z'}}
-    loaded(null, [W,D,Y,Z])
+    return [W,D,Y,Z]
   },
-  start: function(done){done()},
-  stop: function(done){done()}
+  start: function(done){},
+  stop: function(done){}
 }
 
 exports.errors = {}

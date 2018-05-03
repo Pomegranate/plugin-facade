@@ -3,6 +3,7 @@ exports.options = {
 }
 
 exports.metadata = {
+  frameworkVersion: 6,
   name: 'instancePlugin',
   type: 'instance',
   param: 'instance',
@@ -11,10 +12,10 @@ exports.metadata = {
 
 exports.plugin = {
   load: function(inject, loaded){
-    loaded(null, function(){})
+    return function(){}
   },
-  start: function(done){done()},
-  stop: function(done){done()}
+  start: function(done){},
+  stop: function(done){}
 }
 
 exports.errors = {}

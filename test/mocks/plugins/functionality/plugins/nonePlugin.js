@@ -16,30 +16,26 @@ exports.options = {
 }
 
 exports.metadata = {
+  frameworkVersion: 6,
   name: 'nonePlugin',
   type: 'none'
 }
 
 exports.plugin = {
-  load: function(inject, loaded){
-    let tap = inject('tap')
-    this.actionTest = inject('actionTest')
-    this.actionTest.count += 98
+  load: function(tap, actionTest){
+    actionTest.count += 98
     tap.test('action test - load hook', (t) => {
-      t.type(this.actionTest, 'object', 'Can access DI objects.')
+      t.type(actionTest, 'object', 'Can access DI objects.')
       t.done()
     })
     let count = 0
-    loaded(null)
   },
-  start: function(done){
+  start: function(actionTest){
 
-    this.actionTest.count = 200
-    done()
+    actionTest.count = 200
   },
-  stop: function(done){
-    this.actionTest.count = 300
-    done()
+  stop: function(actionTest){
+    actionTest.count = 300
   }
 }
 

@@ -4,6 +4,7 @@ exports.options = {
 }
 
 exports.metadata = {
+  frameworkVersion: 6,
   name: 'servicePlugin',
   type: 'service',
   param: 'service',
@@ -11,19 +12,19 @@ exports.metadata = {
 }
 
 exports.plugin = {
-  load: function(inject, loaded){
-    // loaded(null, {name: 'service'})
+  load: function(Options, DelayTimeout, Logger){
     return Promise.delay(1000)
       .then((result) => {
-        return this.postponeTimeout()
+        return DelayTimeout()
       })
       .delay(1000)
       .then(() => {
         return {name: 'service'}
       })
   },
-  start: function(done){done()},
-  stop: function(done){done()}
+  start: function(){
+  },
+  stop: function(){}
 }
 
 exports.errors = {}

@@ -1,7 +1,7 @@
 /**
- * @file installFiles
+ * @file installingFiles
  * @author Jim Bulkowski <jim.b@paperelectron.com>
- * @project Pomegranate-loader
+ * @project plugin-facade
  * @license MIT {@link http://opensource.org/licenses/MIT}
  */
 
@@ -19,7 +19,9 @@ exports.metadata = {
   depends: ['magnum-test-a']
 }
 
-exports.installer = function(){
-  var install = []
-  return install
+exports.installer = function() {
+  return [
+    {to: 'TestA', src: this.join(__dirname, '../files/installDir'), dest: './test'},
+    {to: 'TestA', src: this.join(__dirname, '../files/installFiles/justOne.js'), dest: './justOne.js'}
+  ]
 }

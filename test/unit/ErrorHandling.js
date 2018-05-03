@@ -188,6 +188,7 @@ tap.test('Inadvertent throw in hook', (t) => {
   let pluginData = getPlugin('riddledWithErrors/plugins/', testPlugin)
   let SP = new Plugin(pluginData)
   let pErrs = SP.getErrors()
+  console.log(SP)
   t.test('Instantiates with no errors', (t) => {
     t.notOk(SP.hasErrors(), 'No errors after instantiation.')
     t.done()
@@ -322,104 +323,104 @@ tap.test('Times out in load', (t) => {
   t.done()
 })
 
-tap.test('Calling Hook callback then returning promise fails.', (t) => {
-  let testPlugin = 'callbackThenPromise'
-  let FrameworkDI = util.mockFrameworkInjector(false, {timeout: 100}, applicationBase)
-  let PluginDI = util.mockPluginDI()
-  let pluginData = getPlugin('riddledWithErrors/plugins/', testPlugin)
-  let SP = new Plugin(pluginData)
-  let pErrs = SP.getErrors()
-  t.test('Instantiates with no errors', (t) => {
-    t.notOk(SP.hasErrors(), 'No errors after instantiation.')
-    t.done()
-  })
-
-
-  t.test('Initialization with no errors.',(t) => {
-    SP.initialize({FrameworkDI, PluginDI})
-      .then((p) => {
-        t.notOk(p.hasErrors(), 'No errors after initialization.')
-        t.done()
-      })
-  })
-
-  t.test('Configuring Plugin', (t) => {
-    SP.configure()
-      .then((p) => {
-        t.notOk(p.hasErrors(), 'No errors after configuration.')
-        t.end()
-      })
-  })
-
-  t.test('Load Hook.', (t) => {
-
-    SP.runHook('load')
-      .then((p) => {
-        let pErrs = p.getErrors()
-        t.equal(pErrs.PluginErrors.length, 1, 'Has 1 Plugin error after loading.')
-        t.equal(pErrs.ValidationErrors.length, 0, 'Has 0 Validation error after loading.')
-        t.equal(pErrs.InterfaceErrors.length, 1, 'Has 1 Interface errors after loading.')
-
-        t.equal(pErrs.PluginErrors[0], 'Plugin load hook failed.', 'Has the correct plugin error message')
-        t.equal(pErrs.InterfaceErrors[0], 'This hook has already been ran. This is usually due to using the callback API after returning a promise or value.' , 'Has the correct interface error message.')
-        t.end()
-      })
-  })
-
-  t.done()
-})
-
-tap.test('Returning a promise then calling Hook callback fails. ', (t) => {
-  let testPlugin = 'promiseThenCallback'
-  let FrameworkDI = util.mockFrameworkInjector(false, {timeout: 100}, applicationBase)
-  let PluginDI = util.mockPluginDI()
-  let pluginData = getPlugin('riddledWithErrors/plugins/', testPlugin)
-  let SP = new Plugin(pluginData)
-  let pErrs = SP.getErrors()
-  t.test('Instantiates with no errors', (t) => {
-    t.notOk(SP.hasErrors(), 'No errors after instantiation.')
-    t.done()
-  })
-
-
-  t.test('Initialization handles errors correctly.',(t) => {
-    SP.initialize({FrameworkDI, PluginDI})
-      .then((p) => {
-        t.notOk(p.hasErrors(), 'No errors after initialization.')
-        t.done()
-      })
-  })
-
-  t.test('Configuring Plugin', (t) => {
-    SP.configure()
-      .then((p) => {
-        t.notOk(p.hasErrors(), 'No errors after configuration.')
-        t.end()
-      })
-  })
-
-  t.test('Load Hook.', (t) => {
-
-    SP.runHook('load')
-      .then((p) => {
-
-        let FrameworkEvents = FrameworkDI.get('FrameworkEvents')
-
-        FrameworkEvents.on('lateError', function(err) {
-          t.match(err.message, /Attempted to use both the hook promise API and the hook callback API./, 'Handles the emitted error.')
-          t.done()
-        })
-
-        let pErrs = p.getErrors()
-        t.equal(pErrs.PluginErrors.length, 0, 'Has 0 Plugin error after loading.')
-        t.equal(pErrs.ValidationErrors.length, 0, 'Has 0 Validation error after loading.')
-        t.equal(pErrs.InterfaceErrors.length, 0, 'Has 0  Interface errors after loading.')
-
-      })
-  })
-
-  t.done()
-})
+// tap.test('Calling Hook callback then returning promise fails.', (t) => {
+//   let testPlugin = 'callbackThenPromise'
+//   let FrameworkDI = util.mockFrameworkInjector(false, {timeout: 100}, applicationBase)
+//   let PluginDI = util.mockPluginDI()
+//   let pluginData = getPlugin('riddledWithErrors/plugins/', testPlugin)
+//   let SP = new Plugin(pluginData)
+//   let pErrs = SP.getErrors()
+//   t.test('Instantiates with no errors', (t) => {
+//     t.notOk(SP.hasErrors(), 'No errors after instantiation.')
+//     t.done()
+//   })
+//
+//
+//   t.test('Initialization with no errors.',(t) => {
+//     SP.initialize({FrameworkDI, PluginDI})
+//       .then((p) => {
+//         t.notOk(p.hasErrors(), 'No errors after initialization.')
+//         t.done()
+//       })
+//   })
+//
+//   t.test('Configuring Plugin', (t) => {
+//     SP.configure()
+//       .then((p) => {
+//         t.notOk(p.hasErrors(), 'No errors after configuration.')
+//         t.end()
+//       })
+//   })
+//
+//   t.test('Load Hook.', (t) => {
+//
+//     SP.runHook('load')
+//       .then((p) => {
+//         let pErrs = p.getErrors()
+//         t.equal(pErrs.PluginErrors.length, 1, 'Has 1 Plugin error after loading.')
+//         t.equal(pErrs.ValidationErrors.length, 0, 'Has 0 Validation error after loading.')
+//         t.equal(pErrs.InterfaceErrors.length, 1, 'Has 1 Interface errors after loading.')
+//
+//         t.equal(pErrs.PluginErrors[0], 'Plugin load hook failed.', 'Has the correct plugin error message')
+//         t.equal(pErrs.InterfaceErrors[0], 'This hook has already been ran. This is usually due to using the callback API after returning a promise or value.' , 'Has the correct interface error message.')
+//         t.end()
+//       })
+//   })
+//
+//   t.done()
+// })
+//
+// tap.test('Returning a promise then calling Hook callback fails. ', (t) => {
+//   let testPlugin = 'promiseThenCallback'
+//   let FrameworkDI = util.mockFrameworkInjector(false, {timeout: 100}, applicationBase)
+//   let PluginDI = util.mockPluginDI()
+//   let pluginData = getPlugin('riddledWithErrors/plugins/', testPlugin)
+//   let SP = new Plugin(pluginData)
+//   let pErrs = SP.getErrors()
+//   t.test('Instantiates with no errors', (t) => {
+//     t.notOk(SP.hasErrors(), 'No errors after instantiation.')
+//     t.done()
+//   })
+//
+//
+//   t.test('Initialization handles errors correctly.',(t) => {
+//     SP.initialize({FrameworkDI, PluginDI})
+//       .then((p) => {
+//         t.notOk(p.hasErrors(), 'No errors after initialization.')
+//         t.done()
+//       })
+//   })
+//
+//   t.test('Configuring Plugin', (t) => {
+//     SP.configure()
+//       .then((p) => {
+//         t.notOk(p.hasErrors(), 'No errors after configuration.')
+//         t.end()
+//       })
+//   })
+//
+//   t.test('Load Hook.', (t) => {
+//
+//     SP.runHook('load')
+//       .then((p) => {
+//
+//         let FrameworkEvents = FrameworkDI.get('FrameworkEvents')
+//
+//         FrameworkEvents.on('lateError', function(err) {
+//           t.match(err.message, /Attempted to use both the hook promise API and the hook callback API./, 'Handles the emitted error.')
+//           t.done()
+//         })
+//
+//         let pErrs = p.getErrors()
+//         t.equal(pErrs.PluginErrors.length, 0, 'Has 0 Plugin error after loading.')
+//         t.equal(pErrs.ValidationErrors.length, 0, 'Has 0 Validation error after loading.')
+//         t.equal(pErrs.InterfaceErrors.length, 0, 'Has 0  Interface errors after loading.')
+//
+//       })
+//   })
+//
+//   t.done()
+// })
 
 tap.test('Late Errors', (t) => {
   let testPlugin = 'lateError'

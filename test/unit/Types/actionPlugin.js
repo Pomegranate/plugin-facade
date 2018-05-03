@@ -31,7 +31,7 @@ tap.test('Action Plugin', (t) => {
 
   t.type(SP, PluginCtor, "Has the correct class")
 
-  let FrameworkDI = util.mockFrameworkInjector(false, {}, applicationBase)
+  let FrameworkDI = util.mockFrameworkInjector(false, {logLevel: 0}, applicationBase)
   let PluginDI = util.mockPluginDI()
   PluginDI.service('tap', tap)
   PluginDI.service('actionTest', {count: 2})

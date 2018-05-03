@@ -13,6 +13,7 @@
  */
 
 exports.metadata = {
+  frameworkVersion: 6,
   name:'overridePlugin',
   type: 'override',
   depends: ['dynamicPlugin']
@@ -25,12 +26,10 @@ exports.override = {
 
 exports.plugin = {
   load: function(injector, loaded) {
-    loaded(null, {plugin: 'overridden'})
+    return {plugin: 'overridden'}
   },
   start: function(done) {
-    done(null)
   },
   stop: function(done) {
-    done(null)
   }
 }

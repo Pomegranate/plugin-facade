@@ -3,17 +3,18 @@ exports.options = {
 }
 
 exports.metadata = {
+  frameworkVersion: 6,
   name: 'nonePlugin',
   type: 'none',
   depends: ['mergePlugin']
 }
 
 exports.plugin = {
-  load: function(inject, loaded){
-    loaded(null, {f: 'none'})
+  load: function(){
+    return {f: 'none'}
   },
-  start: function(done){done()},
-  stop: function(done){done()}
+  start: function(){},
+  stop: function(){}
 }
 
 exports.errors = {}

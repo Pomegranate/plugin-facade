@@ -3,6 +3,7 @@ exports.options = {
 }
 
 exports.metadata = {
+  frameworkVersion: 6,
   name: 'servicePlugin',
   type: 'service',
   param: 'service',
@@ -10,16 +11,15 @@ exports.metadata = {
 }
 
 exports.plugin = {
-  load: function(inject, loaded){
+  load: function(){
     return {g: 'service'}
   },
-  start: function(done){
+  start: function(LateError){
     setTimeout(() => {
-      this.lateError(new Error('Have an error'))
+      LateError(new Error('Have an error'))
     }, 100)
-    done()
   },
-  stop: function(done){done()}
+  stop: function(done){}
 }
 
 exports.errors = {}

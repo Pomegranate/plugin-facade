@@ -3,16 +3,16 @@ exports.options = {
 }
 
 exports.metadata = {
+  frameworkVersion: 6,
   name: 'actionPlugin',
   type: 'action'
 }
 
 exports.plugin = {
   load: function(inject, loaded){
-    loaded(null)
   },
-  start: function(done){done()},
-  stop: function(done){done()}
+  start: function(done){},
+  stop: function(done){}
 }
 
 exports.errors = {}

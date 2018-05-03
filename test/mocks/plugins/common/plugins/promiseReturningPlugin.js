@@ -4,6 +4,7 @@ exports.options = {
 }
 
 exports.metadata = {
+  frameworkVersion: 6,
   name: 'servicePlugin',
   type: 'service',
   param: 'service',
@@ -23,7 +24,7 @@ exports.plugin = {
       })
   },
   start: function(done){
-    return Promise.resolve(true)
+
   },
   stop: function(done){
 

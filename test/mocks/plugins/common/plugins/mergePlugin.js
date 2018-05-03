@@ -3,6 +3,7 @@ exports.options = {
 }
 
 exports.metadata = {
+  frameworkVersion: 6,
   name: 'mergePlugin',
   type: 'merge',
   param: 'merge',
@@ -11,10 +12,10 @@ exports.metadata = {
 
 exports.plugin = {
   load: function(inject, loaded){
-    loaded(null, {e: 'merge'})
+    return {e: 'merge'}
   },
-  start: function(done){done()},
-  stop: function(done){done()}
+  start: function(done){},
+  stop: function(done){}
 }
 
 exports.errors = {}

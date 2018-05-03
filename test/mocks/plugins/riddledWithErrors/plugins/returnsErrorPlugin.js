@@ -3,6 +3,7 @@ exports.options = {
 }
 
 exports.metadata = {
+  frameworkVersion: 6,
   name: 'servicePlugin',
   type: 'service',
   param: 'service',
@@ -11,10 +12,10 @@ exports.metadata = {
 
 exports.plugin = {
   load: function(inject, loaded){
-    loaded(new Error('Im broken'))
+    throw new Error('Im broken')
   },
-  start: function(done){done()},
-  stop: function(done){done()}
+  start: function(done){},
+  stop: function(done){}
 }
 
 exports.errors = {}
