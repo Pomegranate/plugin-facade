@@ -14,7 +14,7 @@
 
 const tap = require('tap');
 
-const FileLister = require('../../../lib/ContextHelpers/fileList');
+const FileLister = require('../../../lib/FileHelpers/fileList');
 
 tap.test('Returns non hidden files.', function(t){
   t.plan(2)

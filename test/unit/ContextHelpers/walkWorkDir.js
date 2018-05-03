@@ -10,7 +10,7 @@ const _fp = require('lodash/fp')
 const path = require('path')
 const Promise = require('bluebird')
 const tap = require('tap');
-const FileLister = require('../../../lib/ContextHelpers/walkWorkDir')
+const FileLister = require('../../../lib/FileHelpers/walkWorkDir')
 /**
  *
  * @module walkWorkDir

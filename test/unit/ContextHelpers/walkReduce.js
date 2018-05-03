@@ -11,8 +11,8 @@ const _fp = require('lodash/fp')
 const path = require('path')
 const Promise = require('bluebird')
 const tap = require('tap');
-const FileLister = require('../../../lib/ContextHelpers/walkWorkDir')
-const walkReducer = require(`../../../lib/ContextHelpers/walkReduce`)
+const FileLister = require('../../../lib/FileHelpers/walkWorkDir')
+const walkReducer = require(`../../../lib/FileHelpers/walkReduce`)
 
 /**
  *

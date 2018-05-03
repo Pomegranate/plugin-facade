@@ -10,7 +10,7 @@
 const tap = require('tap');
 const path = require('path')
 
-const FileLister = require('../../../lib/ContextHelpers/fileListNested');
+const FileLister = require('../../../lib/FileHelpers/fileListNested');
 
 tap.test('Returns files.', function(t){
   let fileListNested = FileLister('./test/mocks/ContextHelpers/fileListNested/noHidden')

@@ -7,7 +7,7 @@
 
 'use strict';
 const tap = require('tap');
-const FileLister = require('../../../lib/ContextHelpers/fileListDeep')
+const FileLister = require('../../../lib/FileHelpers/fileListDeep')
 /**
  *
  * @module fileListDeep

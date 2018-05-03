@@ -8,7 +8,7 @@
 'use strict';
 const tap = require('tap');
 
-const fileName = require('../../../lib/ContextHelpers/fileBaseName');
+const fileName = require('../../../lib/FileHelpers/fileBaseName');
 /**
  *
  * @module fileBaseName
